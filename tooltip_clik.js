@@ -3,9 +3,7 @@
  */
 document.addEventListener('DOMContentLoaded', function () {
     document.addEventListener('click', tooltipShow);
-
-    var yDef, xDef, x, y, t, showTooltip;
-
+    var x, y, t, showTooltip;
     function tooltipShow(event) {
         t = event.target;
         y = event.pageY;
@@ -18,21 +16,18 @@ document.addEventListener('DOMContentLoaded', function () {
             document.body.appendChild(tooltipE);
             showTooltip = tooltipE;
 
-            if (tooltipE.offsetWidth < x) {
+            if (tooltipE.offsetWidth + 10  < x) {
                 tooltipE.style.left = x - 10 - tooltipE.offsetWidth + 'px';
-
-            } else if (tooltipE.offsetWidth > x) {
-
+            } else if (tooltipE.offsetWidth + 10 > x) {
                 tooltipE.style.left = x + 10 + 'px';
             }
 
-            if (tooltipE.offsetHeight < y) {
-                tooltipE.style.top = y - 5 - tooltipE.offsetHeight + 'px';
-
-            } else if (tooltipE.offsetWidth >= y) {
-
-                tooltipE.style.top = y + 15 + 'px';
+            if (tooltipE.offsetHeight + 10  < y) {
+                tooltipE.style.top = y - 10 - tooltipE.offsetHeight + 'px';
+            } else if (tooltipE.offsetWidth + 10 >= y) {
+                tooltipE.style.top = y + 10 + 'px';
             }
+
         } else {
             return
         }
@@ -46,7 +41,6 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             return
         }
-
     }
 
 });
